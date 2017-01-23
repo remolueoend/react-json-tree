@@ -86,14 +86,16 @@ export default class JSONNestedNode extends React.Component {
     level: PropTypes.number.isRequired,
     sortObjectKeys: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
     isCircular: PropTypes.bool,
-    expandable: PropTypes.bool
+    expandable: PropTypes.bool,
+    onToggle: PropTypes.func
   };
 
   static defaultProps = {
     data: [],
     circularCache: [],
     level: 0,
-    expandable: true
+    expandable: true,
+    onToggle: () => {}
   };
 
   constructor(props) {
@@ -177,5 +179,8 @@ export default class JSONNestedNode extends React.Component {
     );
   }
 
-  handleClick = () => this.setState({ expanded: !this.state.expanded });
+  handleClick = () => {
+    this.props.onToggle();
+    return this.setState({ expanded: !this.state.expanded });
+  };
 }

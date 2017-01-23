@@ -158,6 +158,14 @@ const App = () => (
         shouldExpandNode={() => false}
       />
     </div>
+    <p>Toggle Callback</p>
+    <div>
+      <JSONTree
+        data={data}
+        theme={theme}
+        onToggle={() => console.log('toggled')}
+      />
+    </div>
   </div>
 );
 
